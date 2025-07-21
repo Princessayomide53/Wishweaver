@@ -69,7 +69,7 @@ const ParallaxText: React.FC<ParallaxTextProps> = ({
 const Partners = () => {
   const logos = [Logo1, Logo2, Logo3, Logo4, Logo5];
   return (
-    <section className='pt-[1.81rem] md:pt-[3.01rem] lg:pt-[2.41rem] bg-[#FCFCFC] shadow-md'>
+    <section className='pt-[1.81rem] md:pt-[3.01rem] lg:pt-[2.41rem] bg-[#FCFCFC] shadow-xs'>
       <h4 className='font-open text-[#021629] text-3xl md:text-4xl  font-bold text-center'>
         Trusted by these organizations to create unforgettable
         <br /> moments and connections

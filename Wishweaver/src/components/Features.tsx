@@ -71,10 +71,10 @@ const Features = () => {
         heartfelt memory, created together for lasting impact
       </p>
 
-      <article className='mt-7 grid grid-cols-4 gap-y-12 gap-x-7 max-w-7xl mx-auto'>
+      <article className='mt-16 grid grid-cols-4 gap-y-12 gap-x-7 max-w-7xl mx-auto'>
         {Features.map((cards) => (
           <div className='w-[18rem] h-[28rem] bg-red-200 rounded-2xl flex flex-col justify-center items-center'>
-            <figure className='pb-3'>
+            <figure className='pb-3 hover:scale-150 cursor-pointer'>
               <img
                 src={cards.img}
                 alt={cards.title}
