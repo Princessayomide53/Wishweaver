@@ -2,6 +2,7 @@ import React from 'react';
 import create from '../assets/create.svg';
 import invite from '../assets/invite.svg';
 import send from '../assets/send.svg';
+import Button from './Common/Button';
 
 const Works = () => {
   const Cards = [
@@ -25,7 +26,7 @@ const Works = () => {
     },
   ];
   return (
-    <section className='relative pb-20 w-full overflow-hidden'>
+    <section className='relative w-full overflow-hidden'>
       {/* <svg
         width='100%'
         height='100%'
@@ -70,7 +71,7 @@ const Works = () => {
           className='transition-all duration-300 ease-in-out delay-150 path-0'
         ></path>
       </svg>
-      <article className='flex flex-col items-center px-4 h-[44rem] -mt-[17rem] bg-[#acdcff] text-[#0B0C0E] py-5'>
+      <article className='flex flex-col items-center px-4 h-[46rem] -mt-[17rem] bg-[#acdcff] text-[#0B0C0E] py-5'>
         <h1 className='text-3xl md:text-5xl font-bold mb-4'>
           How Does WishWeaver Work?
         </h1>
@@ -95,9 +96,7 @@ const Works = () => {
           ))}
         </div>
 
-        <button className='inline-block my-10  bg-[#ff7f50] text-white cursor-pointer font-semibold py-4 px-8 rounded-xl hover: transition-transform duration-300'>
-          Weave a Card
-        </button>
+        <Button className='inline-block'>Weave a Card</Button>
       </article>
     </section>
   );

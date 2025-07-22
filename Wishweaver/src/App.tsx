@@ -1,7 +1,11 @@
 import './App.css';
+import Benefits from './components/Benefits';
 import Features from './components/Features';
+import Footer from './components/Footer';
+import Frequent from './components/Frequent';
 import Hero from './components/Hero';
 import Partners from './components/Partners';
+import Testimonials from './components/Testimonials';
 import Works from './components/Works';
 
 function App() {
@@ -11,6 +15,10 @@ function App() {
       <Partners />
       <Features />
       <Works />
+      <Benefits />
+      <Testimonials />
+      <Frequent />
+      <Footer />
     </main>
   );
 }

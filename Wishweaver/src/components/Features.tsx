@@ -61,13 +61,13 @@ const Features = () => {
     },
   ];
   return (
-    <section className='my-24'>
+    <section className='mt-20 mb-10'>
       <h2 className='text-center text-5xl'>
         Make Every Occasion Extraordinary
       </h2>
 
       <p className='text-center text-xl py-3'>
-        With WishWeaver’s standout features, it’s not just a card—it’s a
+        With WishWeaver’s standout features, it’s not just a card—it’s a<br />
         heartfelt memory, created together for lasting impact
       </p>
 

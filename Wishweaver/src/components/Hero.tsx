@@ -6,6 +6,8 @@ import partyVideo from '../assets/party.mp4';
 import teamVideo from '../assets/team.mp4';
 import graduation from '../assets/Graduation.mp4';
 import valentine from '../assets/valentine.mp4';
+import Couple from '../assets/couples.mp4';
+
 import anniversary from '../assets/anniversary.mp4';
 
 const Hero = () => {
@@ -23,7 +25,8 @@ const Hero = () => {
     { src: partyVideo },
     { src: graduation },
     { src: anniversary },
-    { src: valentine },
+    { src: Couple },
+    // { src: valentine },
     { src: teamVideo },
   ];
 
@@ -96,18 +99,10 @@ const Hero = () => {
           <br />
           Pool contributions for a cash gift (coming soon)
         </motion.p>
-        <motion.a
-          className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-3 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'
-          variants={heroVariants}
-          aria-label='Explore our work'
-        >
+        <motion.a className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'>
           Weave Your Card
         </motion.a>
-        <motion.a
-          className='inline-block mx-3 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-3 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'
-          variants={heroVariants}
-          aria-label='Explore our work'
-        >
+        <motion.a className='inline-block mx-3 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'>
           Weave Your Card
         </motion.a>
       </motion.div>
