@@ -15,7 +15,6 @@ type OccasionType = 'Birthday' | 'Graduation' | 'Customize';
 const CreateTemplate = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const recipientRef = useRef<HTMLInputElement>(null);
-  const messageRef = useRef<HTMLInputElement>(null);
   const [selectedOccasion, setSelectedOccasion] = useState<OccasionType | ''>(
     ''
   );

@@ -101,12 +101,12 @@ const Hero = () => {
         </motion.p>
         <motion.a
           href='/create-template'
-          className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'
+          className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-4 px-6 rounded-xl transition-transform duration-300 hover:scale-105'
         >
           Weave Your Card
         </motion.a>
-        <motion.a className='inline-block mx-3 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'>
-          Weave Your Card
+        <motion.a className='inline-block mx-3 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-4 px-6 rounded-xl transition-transform duration-300 hover:scale-105'>
+          View Sample Card
         </motion.a>
       </motion.div>
     </section>
