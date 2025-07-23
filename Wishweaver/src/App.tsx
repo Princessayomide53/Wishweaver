@@ -1,25 +1,17 @@
 import './App.css';
-import Benefits from './components/Benefits';
-import Features from './components/Features';
-import Footer from './components/Footer';
-import Frequent from './components/Frequent';
-import Hero from './components/Hero';
-import Partners from './components/Partners';
-import Testimonials from './components/Testimonials';
-import Works from './components/Works';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import CreateTemplate from './Routes/CreateTemplate';
 
 function App() {
   return (
-    <main>
-      <Hero />
-      <Partners />
-      <Features />
-      <Works />
-      <Benefits />
-      <Testimonials />
-      <Frequent />
-      <Footer />
-    </main>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/create-template' element={<CreateTemplate />} />
+        {/* <Route path='/contact' element={<Contact />} /> */}
+      </Routes>
+    </Router>
   );
 }
 

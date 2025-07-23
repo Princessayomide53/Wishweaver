@@ -5,7 +5,7 @@ import newyearVideo from '../assets/newyear.mp4';
 import partyVideo from '../assets/party.mp4';
 import teamVideo from '../assets/team.mp4';
 import graduation from '../assets/Graduation.mp4';
-import valentine from '../assets/valentine.mp4';
+import wedding from '../assets/wedding.mp4';
 import Couple from '../assets/couples.mp4';
 
 import anniversary from '../assets/anniversary.mp4';
@@ -26,8 +26,8 @@ const Hero = () => {
     { src: graduation },
     { src: anniversary },
     { src: Couple },
-    // { src: valentine },
     { src: teamVideo },
+    { src: wedding },
   ];
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -99,7 +99,10 @@ const Hero = () => {
           <br />
           Pool contributions for a cash gift (coming soon)
         </motion.p>
-        <motion.a className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'>
+        <motion.a
+          href='/create-template'
+          className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'
+        >
           Weave Your Card
         </motion.a>
         <motion.a className='inline-block mx-3 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-4 px-6 rounded-xl hover:opacity-20 transition-transform duration-300'>
