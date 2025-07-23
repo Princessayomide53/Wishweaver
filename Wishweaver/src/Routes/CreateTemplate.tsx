@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import celebration from '../assets/Celebration.jpg';
 import birthday from '../assets/birthday1.jpg';
 import birthday2 from '../assets/birthday2.jpg';
 import birthday3 from '../assets/birthday3.jpg';
 import birthday4 from '../assets/birthday4.jpg';
 import birthday5 from '../assets/birthday5.jpg';
-import ThreeDModel from '../components/ThreeD';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import ThreeDModel from '../components/ThreeDModel';
+import Button from '../components/Common/Button';
 
 type OccasionType = 'Birthday' | 'Graduation' | 'Customize';
 const CreateTemplate = () => {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const recipientRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLInputElement>(null);
   const [selectedOccasion, setSelectedOccasion] = useState<OccasionType | ''>(
     ''
   );
+  const [message, setMessage] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState('');
   const options = ['Birthday', 'Graduation', 'Customize'];
   const templates = {
@@ -27,8 +35,49 @@ const CreateTemplate = () => {
     Customize: {},
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!selectedOccasion) {
+      toast.error('Please select an occasion');
+      return;
+    }
+
+    if (selectedOccasion !== 'Customize' && !selectedTemplate) {
+      toast.error('Please choose a template');
+      return;
+    }
+
+    const name = nameRef.current?.value.trim();
+    const recipient = recipientRef.current?.value.trim();
+    const messageValue = selectedOccasion === 'Customize' ? message.trim() : '';
+
+    if (!name || !recipient) {
+      toast.error('Please fill in all required fields');
+      return;
+    }
+
+    const dataToSave = {
+      occasion: selectedOccasion,
+      template: selectedTemplate,
+      name,
+      recipient,
+      message: messageValue,
+    };
+
+    localStorage.setItem('wishCardData', JSON.stringify(dataToSave));
+    toast.success('Card saved successfully! 🎉');
+
+    setSelectedOccasion('');
+    setSelectedTemplate('');
+    if (nameRef.current) nameRef.current.value = '';
+    if (recipientRef.current) recipientRef.current.value = '';
+    setMessage('');
+  };
+
   return (
-    <section className='flex gap-12'>
+    <section className='flex gap-10'>
+      <ToastContainer position='top-center' />
       <article className='w-[45%] h-screen overflow-hidden relative'>
         <figure className='absolute inset-0 z-0'>
           <img
@@ -39,7 +88,7 @@ const CreateTemplate = () => {
         </figure>
         <div className='relative z-10 py-10 p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white m-16'>
           <h2 className='text-3xl font-semibold mb-6'>Weave your Card</h2>
-          <form className='space-y-7'>
+          <form onSubmit={handleSubmit} className='space-y-7'>
             <div>
               <select
                 value={selectedOccasion}
@@ -66,6 +115,7 @@ const CreateTemplate = () => {
             <div>
               <label className='block text-lg mb-1'>Your Name</label>
               <input
+                ref={nameRef}
                 className='w-full p-2 h-12 rounded bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
                 placeholder='e.g. John Doe'
               />
@@ -75,6 +125,7 @@ const CreateTemplate = () => {
                 Who is receiving this card?
               </label>
               <input
+                ref={recipientRef}
                 className='w-full p-2 rounded h-12 bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
                 placeholder='e.g. Mom'
               />
@@ -112,18 +163,24 @@ const CreateTemplate = () => {
               <div>
                 <label className='block text-lg mb-1'>Message</label>
                 <input
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className='w-full p-2 rounded h-12 bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
                   placeholder='Write something sweet...'
                 />
               </div>
             )}
+
+            <Button className='!rounded-full !-mt-0' type='submit'>
+              Weave a card
+            </Button>
           </form>
         </div>
       </article>
 
       {/* card preview */}
       <article className='w-[50%] h-screen'>
-        <h3 className='text-center tracking-wider font-semibold py-10 text-3xl'>
+        <h3 className='text-center tracking-wider font-semibold py-10 text-4xl'>
           Preview Cards
         </h3>
 
@@ -133,7 +190,7 @@ const CreateTemplate = () => {
           templates[selectedOccasion][
             selectedTemplate as keyof (typeof templates)[OccasionType]
           ] && (
-            <figure className='flex justify-center'>
+            <figure className='flex justify-center mr-10'>
               <img
                 src={
                   templates[selectedOccasion as OccasionType][
@@ -146,11 +203,12 @@ const CreateTemplate = () => {
             </figure>
           )}
 
-        {selectedOccasion === 'Customize' && <ThreeDModel />}
+        {selectedOccasion === 'Customize' && <ThreeDModel message={message} />}
 
-        {!selectedTemplate && (
-          <div className=''>
-            <p className='text-black text-center text-3xl '>
+        {!selectedTemplate && selectedOccasion !== 'Customize' && (
+          <div className='flex flex-col justify-center items-center'>
+            <div className='w-[35rem] h-[28rem] bg-gray-400 border border-[#acdcff] rounded-2xl'></div>
+            <p className='text-black text-center text-3xl pt-7'>
               No template selected yet
             </p>
           </div>
