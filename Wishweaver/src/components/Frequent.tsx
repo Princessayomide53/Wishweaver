@@ -41,18 +41,18 @@ const Frequent = () => {
   };
   return (
     <section className='my-20'>
-      <h2 className='text-center text-4xl font-bold text-[#0B0C0E]'>
+      <h2 className='text-center text-2xl md:text-4xl font-bold text-[#0B0C0E]'>
         Frequently Asked Questions
       </h2>
-      <p className='text-center text-2xl font-normal py-4 text-[#0B0C0E]'>
+      <p className='text-center px-3 md:px-0 text-sm md:text-base lg:text-2xl font-normal py-4 text-[#0B0C0E]'>
         Here are answers to common questions to help you get started. For
-        <br /> more details, visit our{' '}
+        <br className='hidden md:block' /> more details, visit our{' '}
         <a href='https://support.mywishweaver.com/' className='text-[#ff7f50]'>
           help center.
         </a>
       </p>
 
-      <div className='mt-10 max-w-4xl space-y-5 mx-auto'>
+      <div className='mt-10 px-4 md:px-0 md:max-w-2xl lg:max-w-4xl space-y-5 mx-auto'>
         {Questions.map(({ id, question, answer }) => (
           <div
             key={id}
@@ -60,7 +60,7 @@ const Frequent = () => {
             onClick={() => toggle(id)}
           >
             <div className='flex justify-between items-center'>
-              <h3 className='text-lg font-semibold text-[#0B0C0E]'>
+              <h3 className='text-base md:text-lg font-semibold text-[#0B0C0E]'>
                 {question}
               </h3>
               {openId === id ? (
@@ -71,7 +71,7 @@ const Frequent = () => {
             </div>
 
             {openId === id && (
-              <p className='mt-2.5 text-gray-600 text-lg font-normal transition-all duration-300'>
+              <p className='mt-2.5 text-gray-600 text-base md:text-lg font-normal transition-all duration-300'>
                 {answer}
               </p>
             )}

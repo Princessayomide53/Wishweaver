@@ -75,22 +75,22 @@ const Features = () => {
   };
 
   return (
-    <section className='mt-20 mb-10'>
-      <h2 className='text-center text-5xl'>
+    <section className='mt-12 md:mt-16 lg:mt-20 md:mb-7 lg:mb-10'>
+      <h2 className='text-center text-2xl md:text-3xl lg:text-5xl'>
         Make Every Occasion Extraordinary
       </h2>
 
-      <p className='text-center text-xl py-3'>
-        With WishWeaver’s standout features, it’s not just a card—it’s a
-        <br />
+      <p className='text-center text-sm lg:text-xl py-3 px-3 md:px-0'>
+        With WishWeaver’s standout features, it’s not just a card. it’s a
+        <br className='hidden md:block' />
         heartfelt memory, created together for lasting impact
       </p>
 
-      <article className='mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-7 max-w-7xl mx-auto'>
+      <article className='mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 md:gap-x-7 max-w-[18rem] md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-7xl mx-auto'>
         {features.map((card, index) => (
           <motion.div
             key={card.id}
-            className={`w-[19rem] h-[28rem] rounded-2xl flex flex-col justify-center items-center px-4 py-5 text-[#0B0C0E] border hover:scale-[1.02] transition-transform duration-300 shadow-sm
+            className={`w-full md:w-[19rem] h-[28rem] rounded-2xl flex flex-col justify-center items-center px-4 py-5 text-[#0B0C0E] border hover:scale-[1.02] transition-transform duration-300 shadow-sm
               ${
                 index === 0 || index === 5
                   ? 'border-[rgba(172,220,255,0.8)] bg-[linear-gradient(101deg,rgba(172,220,255,0.26)_13.31%,rgba(172,220,255,0.1)_57.86%)] hover:border-[#4ab4ff]'
@@ -122,7 +122,9 @@ const Features = () => {
             <h5 className='font-semibold text-xl text-center px-7 py-3'>
               {card.title}
             </h5>
-            <p className='text-lg font-normal text-center px-5'>{card.text}</p>
+            <p className='md:text-lg text-base font-normal text-center px-5'>
+              {card.text}
+            </p>
           </motion.div>
         ))}
       </article>

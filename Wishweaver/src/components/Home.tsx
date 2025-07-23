@@ -7,6 +7,7 @@ import Hero from '../components/Hero';
 import Partners from '../components/Partners';
 import Testimonials from '../components/Testimonials';
 import Works from '../components/Works';
+import Template from './Template';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Partners />
       <Features />
       <Works />
+      <Template />
       <Benefits />
       <Testimonials />
       <Frequent />

@@ -3,8 +3,12 @@ import celebration from '../assets/Celebration.jpg';
 import birthday from '../assets/birthday1.jpg';
 import birthday2 from '../assets/birthday2.jpg';
 import birthday3 from '../assets/birthday3.jpg';
-import birthday4 from '../assets/birthday4.jpg';
+import birthday4 from '../assets/birthday4.svg';
 import birthday5 from '../assets/birthday5.jpg';
+import t3 from '../assets/t3.svg';
+import t8 from '../assets/t8.svg';
+import t9 from '../assets/t9.svg';
+import t10 from '../assets/t10.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -24,12 +28,17 @@ const CreateTemplate = () => {
   const templates = {
     Birthday: {
       minimal: birthday,
-      festive: birthday2,
-      floral: birthday3,
+      festive: birthday5,
+      floral: birthday4,
+      modern: t3,
+      interactive: birthday5,
     },
     Graduation: {
-      modern: birthday4,
-      interactive: birthday5,
+      classicCap: t8,
+      achievementGlow: t9,
+      elegantScroll: t10,
+      boldFuture: t3,
+      digitalCheers: birthday5,
     },
     Customize: {},
   };
@@ -74,8 +83,30 @@ const CreateTemplate = () => {
     setMessage('');
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+  };
+
+  const handleMouseLeave = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.currentTarget.style.transform =
+      'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    e.currentTarget.style.transition =
+      'transform 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99)';
+  };
+
   return (
-    <section className='flex gap-10'>
+    <section className='flex overflow-hidden'>
       <ToastContainer position='top-center' />
       <article className='w-[45%] h-screen overflow-hidden relative'>
         <figure className='absolute inset-0 z-0'>
@@ -178,7 +209,7 @@ const CreateTemplate = () => {
       </article>
 
       {/* card preview */}
-      <article className='w-[50%] h-screen'>
+      <article className='w-[55%] h-screen pl-10'>
         <h3 className='text-center tracking-wider font-semibold py-10 text-4xl'>
           Preview Cards
         </h3>
@@ -189,7 +220,17 @@ const CreateTemplate = () => {
           templates[selectedOccasion][
             selectedTemplate as keyof (typeof templates)[OccasionType]
           ] && (
-            <figure className='flex justify-center mr-10'>
+            <figure
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                willChange: 'transform',
+                transition:
+                  'transform 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99)',
+                // height: '100%',
+              }}
+              className='flex justify-center mr-10'
+            >
               <img
                 src={
                   templates[selectedOccasion as OccasionType][
@@ -206,7 +247,7 @@ const CreateTemplate = () => {
 
         {!selectedTemplate && selectedOccasion !== 'Customize' && (
           <div className='flex flex-col justify-center items-center'>
-            <div className='w-[35rem] h-[28rem] bg-gray-400 border border-[#acdcff] rounded-2xl'></div>
+            <div className='w-[35rem] h-[28rem] bg-gray-200 border border-[#acdcff] rounded-2xl'></div>
             <p className='text-black text-center text-3xl pt-7'>
               No template selected yet
             </p>

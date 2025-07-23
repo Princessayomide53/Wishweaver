@@ -69,12 +69,12 @@ const ParallaxText: React.FC<ParallaxTextProps> = ({
 const Partners = () => {
   const logos = [Logo1, Logo2, Logo3, Logo4, Logo5];
   return (
-    <section className='pt-[1.81rem] md:pt-[3.01rem] lg:pt-[2.41rem] bg-[#FCFCFC] shadow-xs'>
-      <h4 className='font-open text-[#021629] text-3xl md:text-4xl  font-bold text-center'>
+    <section className='pt-[2rem] md:pt-[3.01rem] lg:pt-[2.41rem] bg-[#FCFCFC] shadow-xs'>
+      <h4 className='font-open text-[#021629] text-xl md:text-2xl lg:text-4xl  font-bold text-center'>
         Trusted by these organizations to create unforgettable
         <br /> moments and connections
       </h4>
-      <div className='py-[1.5rem] md:py-[2.95rem]'>
+      <div className='py-[1.5rem] lg:py-[2.95rem]'>
         <div className=''>
           <ParallaxText baseVelocity={2.5}>
             {logos.map((logo, index) => (
@@ -82,7 +82,7 @@ const Partners = () => {
                 key={index}
                 src={logo}
                 alt={`client-logo-${index}`}
-                className={`aspect-video h-14 xl:h-24  w-auto mx-4 md:h-auto `}
+                className={`aspect-video h-14 xl:h-24  w-auto mx-4 `}
               />
             ))}
           </ParallaxText>

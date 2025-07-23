@@ -125,12 +125,13 @@ const Testimonials = () => {
     },
   ];
   return (
-    <section className='pt-[1.81rem] md:pt-[3.01rem] lg:pt-[2.41rem] xl:pt-[4.41rem]'>
-      <h4 className='font-open text-[#021629] text-3xl md:text-4xl font-bold text-center'>
+    <section className='pt-[3rem] md:pt-[3.01rem] lg:pt-[2.41rem] xl:pt-[4.41rem]'>
+      <h4 className='font-open text-[#021629] text-2xl md:text-4xl font-bold text-center'>
         What our customers are saying
       </h4>
-      <p className='text-gray-500 text-center font-normal text-xl py-3'>
-        Discover the unforgettable moments our customers have <br />
+      <p className='text-gray-500 text-center font-normal text-sm md:text-xl py-3'>
+        Discover the unforgettable moments our customers have{' '}
+        <br className='hidden md:block' />
         experienced with WishWeaver.
       </p>
       <div className='py-[1.5rem] md:py-[2.95rem] xl:py-[3.345rem]'>
@@ -139,17 +140,17 @@ const Testimonials = () => {
             {Testimonials.map((test, index) => (
               <div
                 key={index}
-                className='bg-white w-[30rem] p-7 mx-5 h-[19.5rem] shadow-md border-[1px] border-[#acdcff] rounded-2xl'
+                className='bg-white w-[20rem] md:w-[30rem] p-5 md:p-7 mx-5 h-[15.7rem] md:h-[19.5rem] shadow-md border-[1px] border-[#acdcff] rounded-2xl'
               >
                 <figure>
                   {' '}
                   <img
                     src={test.quote}
                     alt={`testimonial-${index}`}
-                    className={`w-12 h-12`}
+                    className={`w-7 h-7 md:w-12 md:h-12`}
                   />
                 </figure>
-                <p className='font-normal my-3 flex !flex-wrap text-xl text-[#0B0C0E]'>
+                <p className='font-normal my-3 flex !flex-wrap text-sm md:text-xl text-[#0B0C0E]'>
                   {test.text}
                 </p>
                 <div className='flex items-center gap-3'>
@@ -161,10 +162,10 @@ const Testimonials = () => {
                     />
                   </figure>
                   <p className='flex flex-col py-2'>
-                    <b className='text-lg font-medium capitalize'>
+                    <b className='text-sm md:text-lg font-medium capitalize'>
                       {test.name}
                     </b>
-                    <b className='text-base font-normal capitalize'>
+                    <b className='text-sm md:text-base font-normal capitalize'>
                       {test.title}
                     </b>
                   </p>

@@ -27,32 +27,6 @@ const Works = () => {
   ];
   return (
     <section className='relative w-full overflow-hidden'>
-      {/* <svg
-        width='100%'
-        height='100%'
-        id='svg'
-        viewBox='0 0 1440 490'
-        xmlns='http://www.w3.org/2000/svg'
-        preserveAspectRatio='none'
-        className='transition duration-300 ease-in-out delay-150 absolute inset-0 w-full -mt-[5rem]'
-      >
-        <defs>
-          <linearGradient id='gradient' x1='2%' y1='37%' x2='98%' y2='63%'>
-            <stop offset='0%' stopColor='#acdcff6b' />
-            <stop offset='50%' stopColor='#acdcff33' />
-            <stop offset='100%' stopColor='#acdcff1A' />
-          </linearGradient>
-        </defs>
-        <path
-          d='M 0,500 L 0,187 C ...'
-          stroke='none'
-          strokeWidth='0'
-          fill='url(#gradient)'
-          fillOpacity='1'
-          className='path-0'
-        />
-      </svg> */}
-
       <svg
         width='100%'
         height='100%'
@@ -71,25 +45,27 @@ const Works = () => {
           className='transition-all duration-300 ease-in-out delay-150 path-0'
         ></path>
       </svg>
-      <article className='flex flex-col items-center px-4 h-[46rem] -mt-[17rem] bg-[#acdcff] text-[#0B0C0E] py-5'>
-        <h1 className='text-3xl md:text-5xl font-bold mb-4'>
+      <article className='flex flex-col items-center px-4 h-[90rem] md:h-[46rem] -mt-[17rem] bg-[#acdcff] text-[#0B0C0E] py-5'>
+        <h1 className='text-2xl text-center -mt-12 md:-mt-0 md:text-3xl lg:text-5xl font-bold mb-4'>
           How Does WishWeaver Work?
         </h1>
-        <p className='max-w-4xl text-base text-center md:text-lg'>
+        <p className='md:max-w-2xl lg:max-w-4xl text-base text-center md:text-lg'>
           Easily weave group cards, collect contributions, and deliver
           thoughtful messages with just a few clicks.
         </p>
-        <div className='grid grid-cols-3 place-items-center pt-10 gap-24 max-w-7xl mx-auto'>
-          {Cards.map((items) => (
-            <div className=''>
+        <div
+          className={`grid grid-cols-1 md:grid-cols-3 justify-center md:place-items-center pt-5 md:pt-7 lg:pt-10 gap-5 md:gap-12 lg:gap-24 max-w-[18rem] md:max-w-7xl mx-auto`}
+        >
+          {Cards.map((items, index) => (
+            <div className={`${index === 1 ? 'md:mt-10' : ''}`}>
               <figure>
                 <img src={items.img} alt='How it works' />
               </figure>
 
-              <h5 className=' text-[#0B0C0E] text-center text-xl font-semibold'>
+              <h5 className=' text-[#0B0C0E] text-center text-lg lg:text-xl font-semibold'>
                 {items.title}
               </h5>
-              <p className='text-lg max-w-64 mx-auto text-center'>
+              <p className='text-base px-3 md:px-0 lg:text-lg md:max-w-xl lg:max-w-64 mx-auto text-center'>
                 {items.text}
               </p>
             </div>

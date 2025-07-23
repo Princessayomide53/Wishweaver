@@ -81,14 +81,14 @@ const Hero = () => {
         variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
       >
         <motion.h1
-          className='text-7xl sm:text-5xl font-bold mb-4'
+          className='text-3xl md:text-5xl lg:text-7xl sm:text-5xl font-bold mb-4'
           variants={heroVariants}
         >
           Make Every Apreciation <br />
           Special with a Group Card
         </motion.h1>
         <motion.p
-          className='text-lg sm:text-xl py-7 mb-6 max-w-2xl mx-auto'
+          className='text-xs md:text-sm lg:text-base xl:text-lg sm:text-xl py-7 mb-6 max-w-2xl mx-auto'
           variants={heroVariants}
         >
           For yourself or someone special with messages from multiple
@@ -101,11 +101,11 @@ const Hero = () => {
         </motion.p>
         <motion.a
           href='/create-template'
-          className='inline-block mx-3 bg-[#ff7f50] text-white font-semibold cursor-pointer py-4 px-6 rounded-xl transition-transform duration-300 hover:scale-105'
+          className='inline-block mx-3 text-sm md:text-base px-4 bg-[#ff7f50] text-white font-semibold cursor-pointer py-3 md:py-4 md:px-6 rounded-xl transition-transform duration-300 hover:scale-105'
         >
           Weave Your Card
         </motion.a>
-        <motion.a className='inline-block mx-3 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-4 px-6 rounded-xl transition-transform duration-300 hover:scale-105'>
+        <motion.a className='inline-block mx-3 text-sm md:text-base px-4 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-3 md:py-4 md:px-6 rounded-xl transition-transform duration-300 hover:scale-105'>
           View Sample Card
         </motion.a>
       </motion.div>
