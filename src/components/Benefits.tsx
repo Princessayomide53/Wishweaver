@@ -4,6 +4,7 @@ import thanks from '../assets/thanks.svg';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import Button from './Common/Button';
 import { motion, type Variants } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Benefits = () => {
   const textVariant: Variants = {
@@ -77,9 +78,12 @@ const Benefits = () => {
                 </motion.p>
               ))}
             </motion.div>
-            <Button className='!rounded-full !mt-6 !py-3 lg:!py-4 text-sm md:text-base'>
-              Weave a Card
-            </Button>
+
+            <Link to='/Cards'>
+              <Button className='!rounded-full !mt-6 !py-3 lg:!py-4 text-sm md:text-base'>
+                View card
+              </Button>
+            </Link>
           </div>
           <motion.figure
             initial='hidden'
@@ -138,9 +142,11 @@ const Benefits = () => {
                 </motion.p>
               ))}
             </div>
-            <Button className='!rounded-full md:!py-3 lg:!py-4 !mt-6 text-sm md:text-base'>
-              Weave a Card
-            </Button>
+            <Link to='/Cards'>
+              <Button className='!rounded-full md:!py-3 lg:!py-4 !mt-6 text-sm md:text-base'>
+                View Card
+              </Button>
+            </Link>
           </div>
         </div>
       </article>

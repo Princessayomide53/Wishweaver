@@ -58,10 +58,11 @@ const Nav = () => {
             ))}
           </ul>
 
-          <Button className='!bg-transparent rounded-full !py-2.5 !px-5 border-2 !mt-0 border-[#ff7f50]'>
-            Weave your card
-          </Button>
-
+          <Link to='/create-template'>
+            <Button className='!bg-transparent rounded-full !py-2.5 !px-5 border-2 !mt-0 border-[#ff7f50]'>
+              Weave your card
+            </Button>
+          </Link>
           <h2 className='text-white'>Sign in</h2>
         </nav>
 
@@ -95,9 +96,11 @@ const Nav = () => {
             </ul>
 
             <div className='flex flex-col gap-3 pt-6 md:pt-3'>
-              <Button className='!bg-transparent rounded-full border-2 border-[#ff7f50] !text-white'>
-                Weave your card
-              </Button>
+              <Link to='/create-template'>
+                <Button className='!bg-transparent rounded-full border-2 border-[#ff7f50] !text-white'>
+                  Weave your card
+                </Button>
+              </Link>
               <h2 className='text-white text-center'>Sign in</h2>
             </div>
           </motion.div>
