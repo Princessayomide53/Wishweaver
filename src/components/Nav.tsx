@@ -14,7 +14,7 @@ const Nav = () => {
     const handleScroll = () => {
       const currentY = window.scrollY;
 
-      if (currentY > lastScrollY && currentY > 120) {
+      if (currentY > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
