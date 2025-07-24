@@ -1,14 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Nav from './Nav';
 import { easeOut, motion, type Variants } from 'framer-motion';
-import newyearVideo from '../assets/newyear.mp4';
-import partyVideo from '../assets/party.mp4';
-import teamVideo from '../assets/team.mp4';
-import graduation from '../assets/Graduation.mp4';
-import wedding from '../assets/wedding.mp4';
-import Couple from '../assets/couples.mp4';
 import { Link } from 'react-router-dom';
-import anniversary from '../assets/anniversary.mp4';
 
 const Hero = () => {
   const heroVariants: Variants = {
@@ -29,6 +22,9 @@ const Hero = () => {
     },
     {
       src: 'https://res.cloudinary.com/dpng3tgio/video/upload/v1753373467/Graduation_tfqexl.mp4',
+    },
+    {
+      src: 'https://res.cloudinary.com/dpng3tgio/video/upload/v1753373547/valentine_q0glre.mp4',
     },
     {
       src: 'https://res.cloudinary.com/dpng3tgio/video/upload/v1753373433/couples_xbtxhq.mp4',
