@@ -25,8 +25,8 @@ type BirthdayTemplateKeys = 'minimal' | 'festive' | 'floral' | 'modern';
 type GraduationTemplateKeys =
   | 'classicCap'
   | 'achievementGlow'
-  | 'elegantScroll'
-  | 'boldFuture';
+  | 'elegantScroll';
+// | 'boldFuture';
 // | 'digitalCheers';
 
 type Templates = {
@@ -47,7 +47,7 @@ const templates: Templates = {
     classicCap: { name: 'Classic Cap', src: t8 },
     achievementGlow: { name: 'Achievement Glow', src: t9 },
     elegantScroll: { name: 'Elegant Scroll', src: t10 },
-    boldFuture: { name: 'Bold Future', src: t3 },
+    // boldFuture: { name: 'Bold Future', src: t3 },
     // digitalCheers: { name: 'Digital Cheers', src: birthday5 },
   },
   Customize: {},
