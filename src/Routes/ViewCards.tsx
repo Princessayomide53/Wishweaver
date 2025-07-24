@@ -60,14 +60,6 @@ const Cards = () => {
       <Nav />
       <article className='min-h-screen p-6 md:p-12 bg-gray-600 text-gray-800'>
         <div className='max-w-6xl mx-auto space-y-10 pt-20'>
-          {/* Debug section - Remove this after fixing */}
-          <div className='bg-yellow-100 p-4 rounded-lg text-black'>
-            <h3 className='font-bold'>Debug Info:</h3>
-            <p>Card Data: {cardData ? JSON.stringify(cardData) : 'null'}</p>
-            <p>Group Messages Count: {groupMessages.length}</p>
-            <p>Card Occasion: {cardData?.occasion || 'N/A'}</p>
-          </div>
-
           {/* Fixed Card Section */}
           {cardData &&
             cardData.occasion === 'Customize' &&
@@ -161,14 +153,6 @@ const Cards = () => {
               No card or messages found in local storage.
             </div>
           )}
-
-          {/* Show something always for testing */}
-          <div className='bg-white p-4 rounded-lg'>
-            <h3 className='text-lg font-semibold mb-2'>
-              Cards Page Loaded Successfully
-            </h3>
-            <p>This section always shows to confirm the page is working.</p>
-          </div>
         </div>
       </article>
     </>

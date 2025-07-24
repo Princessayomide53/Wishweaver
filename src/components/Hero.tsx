@@ -292,7 +292,7 @@ const Hero = () => {
               Weave Your Card
             </button>
           </Link>
-          <Link to='/group-template'>
+          <Link to='/cards'>
             <button className='w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border-2 border-[#ff7f50] text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:bg-[#ff7f50] hover:bg-opacity-20 text-sm md:text-base'>
               View Sample Card
             </button>
