@@ -84,7 +84,7 @@ const GroupText = () => {
           <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-[32rem] md:h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
             <h2 className='text-center text-xl'>Group Celebration</h2>
 
-            <p className='text-center text-xs md:text-base md:py-4'>
+            <p className='text-center text-xs md:text-base py-4'>
               A heartfelt moment where friends gather to celebrate someone
               special, sharing stories, laughter, and the joy of reconnecting.
             </p>
