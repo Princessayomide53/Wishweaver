@@ -15,6 +15,7 @@ type GroupMessage = {
   message: string;
   timestamp: string;
   from: string;
+  file: string;
 };
 
 const Preview = () => {
