@@ -46,7 +46,7 @@ const Works = () => {
         ></path>
       </svg>
       <article className='flex flex-col items-center px-4 h-[90rem] md:h-[46rem] -mt-[17rem] bg-[#acdcff] text-[#0B0C0E] py-5'>
-        <h1 className='text-2xl text-center -mt-12 md:-mt-0 md:text-3xl lg:text-5xl font-bold mb-4'>
+        <h1 className='text-2xl text-center -mt-8 md:-mt-0 md:text-3xl lg:text-5xl font-bold mb-4'>
           How Does WishWeaver Work?
         </h1>
         <p className='md:max-w-2xl lg:max-w-4xl text-base text-center md:text-lg'>
