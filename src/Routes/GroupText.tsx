@@ -80,7 +80,7 @@ const GroupText = () => {
           <BiArrowBack className='text-white text-4xl' />
         </Link>
 
-        <article className='absolute inset-0 z-10 flex flex-col justify-center items-center pt-20 lg:pt-10'>
+        <article className='absolute inset-0 z-10 flex flex-col justify-center items-center pt-14 lg:pt-10'>
           <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-[32rem] md:h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
             <h2 className='text-center text-xl'>Group Celebration</h2>
 
