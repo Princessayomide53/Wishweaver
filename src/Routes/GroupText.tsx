@@ -4,6 +4,8 @@ import Button from '../components/Common/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from '../components/Nav';
+import { BiArrowBack } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const GroupText = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -61,6 +63,10 @@ const GroupText = () => {
     <>
       {/* <Nav /> */}
 
+      <Link to='/'>
+        <BiArrowBack className='text-white text-2xl' />
+      </Link>
+
       <section className='relative h-screen overflow-hidden'>
         <ToastContainer position='top-center' />
         <figure>
@@ -72,7 +78,7 @@ const GroupText = () => {
         </figure>
 
         <article className='absolute inset-0 z-10 flex flex-col justify-center items-center pt-20 lg:pt-10'>
-          <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
+          <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-screen md:h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
             <h2 className='text-center text-xl'>Group Celebration</h2>
 
             <p className='text-center text-xs md:text-base md:py-4'>

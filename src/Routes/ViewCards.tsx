@@ -18,7 +18,7 @@ type GroupMessage = {
   file: string;
 };
 
-const Cards = () => {
+const ViewCards = () => {
   const [cardData, setCardData] = useState<WishCardData | null>(null);
   const [groupMessages, setGroupMessages] = useState<GroupMessage[]>([]);
 
@@ -26,13 +26,9 @@ const Cards = () => {
     const card = localStorage.getItem('wishCardData');
     const messageData = localStorage.getItem('groupMessageData');
 
-    console.log('Card data from localStorage:', card); // Debug log
-    console.log('Message data from localStorage:', messageData); // Debug log
-
     if (card) {
       try {
         const parsedCard = JSON.parse(card);
-        console.log('Parsed card data:', parsedCard); // Debug log
         setCardData(parsedCard);
       } catch (err) {
         console.error('Invalid card data:', err);
@@ -50,10 +46,6 @@ const Cards = () => {
       }
     }
   }, []);
-
-  // Debug: Log current state
-  console.log('Current cardData:', cardData);
-  console.log('Current groupMessages:', groupMessages);
 
   return (
     <>
@@ -159,4 +151,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default ViewCards;
