@@ -102,12 +102,24 @@ const CreateTemplate = () => {
       message: messageValue,
     };
 
-    const existing = localStorage.getItem('wishCardData');
-    const currentList = existing ? JSON.parse(existing) : [];
+    let existingCards = [];
+    try {
+      const stored = localStorage.getItem('wishCardData');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        // Handle both single object and array formats for backward compatibility
+        existingCards = Array.isArray(parsed) ? parsed : [parsed];
+      }
+    } catch (error) {
+      console.error('Error parsing existing cards:', error);
+      existingCards = [];
+    }
 
-    const updatedList = [...currentList, dataToSave];
-    localStorage.setItem('wishCardData', JSON.stringify(updatedList));
+    // Add new card to the array
+    const updatedCards = [...existingCards, dataToSave];
 
+    // Save updated array back to localStorage
+    localStorage.setItem('wishCardData', JSON.stringify(updatedCards));
     toast.success('Card saved successfully! 🎉');
     setTimeout(() => {
       navigate('/view-cards');
