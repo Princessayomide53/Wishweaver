@@ -12,7 +12,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/create-template' element={<CreateTemplate />} />
         <Route path='/group-template' element={<GroupText />} />
-        <Route path='/Cards' element={<Cards />} />
+        <Route path='/cards' element={<Cards />} />
       </Routes>
     </Router>
   );
