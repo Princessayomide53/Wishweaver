@@ -11,7 +11,7 @@ const GroupText = () => {
   const [sender, setSender] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!message.trim() || !sender.trim()) {
@@ -19,9 +19,27 @@ const GroupText = () => {
       return;
     }
 
+    const readFileAsDataURL = (file: File): Promise<string> =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+    let fileDataUrl: string | null = null;
+    if (file) {
+      try {
+        fileDataUrl = await readFileAsDataURL(file);
+      } catch (err) {
+        toast.error('Failed to read file.');
+        return;
+      }
+    }
+
     const newMessage = {
       from: sender.trim(),
-      fileName: file ? file.name : '',
+      file: fileDataUrl,
       message: message.trim(),
       timestamp: new Date().toISOString(),
     };

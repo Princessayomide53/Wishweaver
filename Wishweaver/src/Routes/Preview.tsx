@@ -125,19 +125,23 @@ const Preview = () => {
                     key={i}
                     className='bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between'
                   >
-                    {/* File Preview Section */}
-                    {item.fileName ? (
-                      <div className='h-48 bg-gray-200 flex items-center justify-center px-3 text-center'>
-                        <p className='text-sm text-gray-600 break-words'>
-                          {item.fileName}
-                        </p>
+                    {item.file ? (
+                      <div className='h-48 bg-gray-200 flex items-center justify-center'>
+                        {item.file.startsWith('data:image') ? (
+                          <img
+                            src={item.file}
+                            alt='Uploaded visual'
+                            className='object-cover h-full w-full'
+                          />
+                        ) : item.file.startsWith('data:audio') ? (
+                          <audio controls className='w-full px-2'>
+                            <source src={item.file} />
+                            Your browser does not support the audio element.
+                          </audio>
+                        ) : null}
                       </div>
                     ) : (
-                      <div className='h-48 bg-gray-100 flex items-center justify-center px-3'>
-                        <p className='text-sm text-gray-400 italic'>
-                          No file uploaded
-                        </p>
-                      </div>
+                      ''
                     )}
 
                     <div className='p-4'>
