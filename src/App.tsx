@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import CreateTemplate from './Routes/CreateTemplate';
 import GroupText from './Routes/GroupText';
-import Preview from './Routes/Preview';
+import Cards from './Routes/Cards';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/create-template' element={<CreateTemplate />} />
         <Route path='/group-template' element={<GroupText />} />
-        <Route path='/Cards' element={<Preview />} />
+        <Route path='/Cards' element={<Cards />} />
       </Routes>
     </Router>
   );

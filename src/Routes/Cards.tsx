@@ -18,7 +18,7 @@ type GroupMessage = {
   file: string;
 };
 
-const Preview = () => {
+const Cards = () => {
   const [cardData, setCardData] = useState<WishCardData | null>(null);
   const [groupMessages, setGroupMessages] = useState<GroupMessage[]>([]);
 
@@ -172,4 +172,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default Cards;
