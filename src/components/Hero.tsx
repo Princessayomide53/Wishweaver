@@ -41,15 +41,6 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [videos.length]);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.src = videos[currentVideoIndex].src;
-      videoRef.current.load();
-      videoRef.current
-        .play()
-        .catch((error) => console.error('Video playback failed:', error));
-    }
-  }, [currentVideoIndex]);
   return (
     <section className='relative h-[42rem] md:min-h-screen flex flex-col items-center text-center text-white p-4 sm:p-8'>
       <div className='absolute inset-0'>
@@ -57,6 +48,7 @@ const Hero = () => {
       </div>
 
       <motion.video
+        key={videos[currentVideoIndex].src}
         ref={videoRef}
         className='absolute inset-0 w-full h-full object-cover pointer-events-none'
         autoPlay

@@ -85,7 +85,7 @@ const Template = () => {
               <img
                 src={temp}
                 alt='templates'
-                className='object-cover w-full h-full'
+                className='object-cover w-full h-[25rem] md:h-auto'
               />
             </figure>
           </motion.div>

@@ -47,8 +47,8 @@ const Benefits = () => {
           className='transition-all duration-300 ease-in-out delay-150 path-0'
         ></path>
       </svg>
-      <article className='md:h-[63rem] lg:h-[79rem] -mt-[17rem] bg-[#acdcff] py-5'>
-        <div className='flex flex-col gap-7 md:gap-0 -mt-10 md:-mt-0 md:flex-row md:justify-around px-3 md:px-0 md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-7xl mx-auto'>
+      <article className='md:h-[63rem] lg:h-[79rem] -mt-[17rem] bg-[#acdcff] py-5 pb-5'>
+        <div className='flex flex-col gap-7 md:gap-0 -mt-3 md:-mt-0 md:flex-row md:justify-around px-3 md:px-0 md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-7xl mx-auto'>
           <div className=''>
             <motion.h3 className='text-2xl xl:text-4xl text-center md:text-left font-bold max-w-md text-[#0B0C0E]'>
               Businesses benefit from fostering team spirit and employee
@@ -104,7 +104,7 @@ const Benefits = () => {
             <img
               src={thanks}
               alt='thanks-card'
-              className='object-cover w-auto md:h-[25rem] lg:h-[30rem] rounded-2xl'
+              className='object-cover w-full md:w-auto md:h-[25rem] lg:h-[30rem] rounded-2xl'
             />
           </motion.figure>
 
