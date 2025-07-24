@@ -16,7 +16,7 @@ const ThreeDModel = ({ message }: { message: string }) => {
     return 0.15;
   };
   return (
-    <div className='w-full h-[35rem]'>
+    <div className='w-full h-[25rem] lg:h-[35rem]'>
       <Canvas camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={1.2} />
         <directionalLight position={[5, 5, 5]} />

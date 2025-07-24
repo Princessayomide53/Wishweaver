@@ -43,7 +43,7 @@ const Nav = () => {
       } ${nav && 'bg-[#0b0c0e]/90'}`}
     >
       <div
-        className={`relative flex mx-auto z-20 justify-between w-full xl:max-w-[85rem] py-5 md:py-3 xl:py-8 lg:max-w-[60rem] md:max-w-[45rem] px-3 md:px-0`}
+        className={`relative flex mx-auto z-20 justify-between w-full xl:max-w-[75rem] nav py-5 md:py-3 xl:py-8 lg:max-w-[60rem] md:max-w-[45rem] px-3 md:px-0`}
       >
         <h1 className='text-white font-bold text-2xl mt-2'>
           <Link to='/'>

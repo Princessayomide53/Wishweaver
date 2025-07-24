@@ -75,3 +75,18 @@ body {
     );
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    max-width: 85rem;
+  }
+
+  .features {
+    width: 19rem;
+  }
+
+  .template {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

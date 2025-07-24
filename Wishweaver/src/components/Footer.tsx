@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
         className='object-cover w-full h-[68rem] md:h-[23rem] lg:h-[30rem] xl:h-auto'
       />
 
-      <div className='absolute inset-0 z-10 px-3 md:px-0 h-[5rem] md:h-auto md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-7xl mx-auto py-5 md:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6'>
+      <div className='absolute inset-0 z-10 px-3 md:px-0 h-[5rem] md:h-auto md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-[75rem] nav mx-auto py-5 md:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6'>
         <div className='flex flex-col space-y-5 mt-3 md:mt-5'>
           <img src={logo} alt='logo' className='w-36' />
 

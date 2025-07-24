@@ -157,9 +157,9 @@ const CreateTemplate = () => {
   return (
     <>
       <Nav />
-      <section className='lg:flex h-screen overflow-hidden bg-cyan-900'>
+      <section className='lg:flex h-screen overflow-hidden bg-cyan-900 '>
         <ToastContainer position='top-center' />
-        <article className='md:w-full lg:w-[45%] h-screen overflow-hidden relative'>
+        <article className='md:w-full lg:w-[45%] h-screen overflow-hidden relative pt-10 md:pt-0'>
           <figure className='absolute inset-0 z-0'>
             <img
               src={celebration}
@@ -167,9 +167,11 @@ const CreateTemplate = () => {
               className='object-cover w-full h-[45rem]'
             />
           </figure>
-          <div className='relative z-10 py-5 md:py-7 p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white mt-16 md:mt-28 m-5 md:m-16'>
-            <h2 className='text-3xl font-semibold mb-6'>Weave your Card</h2>
-            <form onSubmit={handleSubmit} className='space-y-7'>
+          <div className='relative z-10 py-5 md:py-7 p-3 md:p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white mt-16 md:mt-28 m-5 md:m-16'>
+            <h2 className='text-xl md:text-3xl font-semibold mb-6'>
+              Weave your Card
+            </h2>
+            <form onSubmit={handleSubmit} className='space-y-5 md:space-y-7'>
               <div>
                 <select
                   value={selectedOccasion}
@@ -179,7 +181,10 @@ const CreateTemplate = () => {
                   }}
                   className='w-full p-2 h-12 focus:outline-blue-300 rounded bg-white/20'
                 >
-                  <option value='' className='bg-white/20 text-black'>
+                  <option
+                    value=''
+                    className='bg-white/20 text-black md:text-base text-sm'
+                  >
                     Select an Occasion
                   </option>
                   {options.map((val) => (
@@ -195,7 +200,9 @@ const CreateTemplate = () => {
               </div>
 
               <div>
-                <label className='block text-lg mb-1'>Your Name</label>
+                <label className='block text-sm md:text-lg mb-1'>
+                  Your Name
+                </label>
                 <input
                   ref={nameRef}
                   className='w-full p-2 h-12 rounded bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
@@ -204,7 +211,7 @@ const CreateTemplate = () => {
               </div>
 
               <div>
-                <label className='block text-lg mb-1'>
+                <label className='block text-sm md:text-lg mb-1'>
                   Who is receiving this card?
                 </label>
                 <input
@@ -218,7 +225,7 @@ const CreateTemplate = () => {
                 Object.keys(templates[selectedOccasion]).length > 0 &&
                 selectedOccasion !== 'Customize' && (
                   <div>
-                    <label className='block text-lg mb-1'>
+                    <label className='block text-sm md:text-lg mb-1'>
                       Choose a Design Template
                     </label>
                     <select
@@ -246,7 +253,9 @@ const CreateTemplate = () => {
 
               {selectedOccasion === 'Customize' && (
                 <div>
-                  <label className='block text-lg mb-1'>Message</label>
+                  <label className='block text-sm md:text-lg mb-1'>
+                    Message
+                  </label>
                   <input
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}

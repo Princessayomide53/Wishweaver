@@ -14,6 +14,7 @@ type GroupMessage = {
   fileName: string;
   message: string;
   timestamp: string;
+  from: string;
 };
 
 const Preview = () => {
@@ -25,11 +26,15 @@ const Preview = () => {
     const messageData = localStorage.getItem('groupMessageData');
 
     if (card) setCardData(JSON.parse(card));
-
-    // Handle multiple group messages if needed later
     if (messageData) {
-      const parsed = JSON.parse(messageData);
-      setGroupMessages([parsed]);
+      try {
+        const parsed = JSON.parse(messageData);
+        if (Array.isArray(parsed)) {
+          setGroupMessages(parsed);
+        }
+      } catch (err) {
+        console.error('Invalid group message data:', err);
+      }
     }
   }, []);
 
@@ -69,7 +74,7 @@ const Preview = () => {
           {cardData &&
             cardData.occasion === 'Customize' &&
             cardData.message && (
-              <div className='bg-white shadow-lg rounded-xl overflow-hidden p-4'>
+              <div className='bg-white h-[30rem] lg:h-auto shadow-lg rounded-xl overflow-hidden p-4'>
                 <h2 className='text-xl font-semibold mb-4'>
                   To: {cardData.recipient}
                 </h2>
@@ -111,20 +116,36 @@ const Preview = () => {
           {/* Group Messages Grid */}
           {groupMessages.length > 0 && (
             <div>
-              <h3 className='text-2xl font-semibold mb-4'>Group Messages</h3>
+              <h3 className='text-2xl text-white font-semibold mb-4'>
+                Group Messages
+              </h3>
               <div className='grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
                 {groupMessages.map((item, i) => (
                   <div
                     key={i}
                     className='bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between'
                   >
-                    {/* Simulate image if it was saved */}
-                    <div className='h-48 bg-gray-200 flex items-center justify-center'>
-                      <p className='text-sm text-gray-600'>{item.fileName}</p>
-                    </div>
+                    {/* File Preview Section */}
+                    {item.fileName ? (
+                      <div className='h-48 bg-gray-200 flex items-center justify-center px-3 text-center'>
+                        <p className='text-sm text-gray-600 break-words'>
+                          {item.fileName}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className='h-48 bg-gray-100 flex items-center justify-center px-3'>
+                        <p className='text-sm text-gray-400 italic'>
+                          No file uploaded
+                        </p>
+                      </div>
+                    )}
+
                     <div className='p-4'>
                       <p className='text-gray-800'>{item.message}</p>
-                      <p className='text-xs text-gray-400 mt-2'>
+                      <p className='text-xs text-gray-500 mt-2'>
+                        From: <span className='font-semibold'>{item.from}</span>
+                      </p>
+                      <p className='text-xs text-gray-400'>
                         {new Date(item.timestamp).toLocaleString()}
                       </p>
                     </div>

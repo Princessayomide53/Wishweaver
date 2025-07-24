@@ -86,11 +86,11 @@ const Features = () => {
         heartfelt memory, created together for lasting impact
       </p>
 
-      <article className='mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 md:gap-x-7 max-w-[18rem] md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-7xl mx-auto'>
+      <article className='mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 md:gap-x-7 max-w-[18rem] md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-6xl nav mx-auto'>
         {features.map((card, index) => (
           <motion.div
             key={card.id}
-            className={`w-full md:w-[19rem] h-[28rem] rounded-2xl flex flex-col justify-center items-center px-4 py-5 text-[#0B0C0E] border hover:scale-[1.02] transition-transform duration-300 shadow-sm
+            className={`w-full md:w-[19rem] features xl:w-[17rem] h-[28rem] rounded-2xl flex flex-col justify-center items-center px-4 py-5 text-[#0B0C0E] border hover:scale-[1.02] transition-transform duration-300 shadow-sm
               ${
                 index === 0 || index === 5
                   ? 'border-[rgba(172,220,255,0.8)] bg-[linear-gradient(101deg,rgba(172,220,255,0.26)_13.31%,rgba(172,220,255,0.1)_57.86%)] hover:border-[#4ab4ff]'

@@ -8,26 +8,33 @@ import Nav from '../components/Nav';
 const GroupText = () => {
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState('');
+  const [sender, setSender] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!file || !message.trim()) {
-      toast.error('Please upload a file and write a message.');
+    if (!message.trim() || !sender.trim()) {
+      toast.error('Please enter your name and message.');
       return;
     }
 
-    const data = {
-      fileName: file.name,
+    const newMessage = {
+      from: sender.trim(),
+      fileName: file ? file.name : '',
       message: message.trim(),
       timestamp: new Date().toISOString(),
     };
 
-    localStorage.setItem('groupMessageData', JSON.stringify(data));
+    const existing = localStorage.getItem('groupMessageData');
+    const parsed: any[] = existing ? JSON.parse(existing) : [];
+    parsed.push(newMessage);
+
+    localStorage.setItem('groupMessageData', JSON.stringify(parsed));
     toast.success('Message saved successfully! 🎉');
 
     setMessage('');
+    setSender('');
     setFile(null);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
@@ -46,18 +53,35 @@ const GroupText = () => {
         </figure>
 
         <article className='absolute inset-0 z-10 flex flex-col justify-center items-center pt-20 lg:pt-10'>
-          <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-[35rem] md:h-[32rem] lg:h-[35rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
+          <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-[38rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
             <h2 className='text-center text-xl'>Group Celebration</h2>
 
-            <p className='text-center text-xs md:text-base py-4'>
+            <p className='text-center text-xs md:text-base md:py-4'>
               A heartfelt moment where friends gather to celebrate someone
               special, sharing stories, laughter, and the joy of reconnecting.
             </p>
 
-            <form className='space-y-6 mt-6' onSubmit={handleSubmit}>
+            <form
+              className='space-y-3 md:space-y-6 mt-6'
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label className='block mb-1 text-xs md:text-sm text-white'>
-                  Upload Image, GIF or Audio
+                  Your Name
+                </label>
+                <input
+                  type='text'
+                  value={sender}
+                  onChange={(e) => setSender(e.target.value)}
+                  placeholder='e.g. John Doe'
+                  className='w-full p-2 h-12 rounded bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
+                  required
+                />
+              </div>
+
+              <div>
+                <label className='block mb-1 text-xs md:text-sm text-white'>
+                  Upload Image, GIF or Audio (Optional)
                 </label>
                 <input
                   ref={fileInputRef}
@@ -78,6 +102,7 @@ const GroupText = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className='w-full p-3 rounded-xl bg-white/20 text-sm md:text-base focus:outline-blue-300 text-white placeholder:text-white/70 resize-none'
+                  required
                 ></textarea>
               </div>
 

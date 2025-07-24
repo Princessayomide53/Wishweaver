@@ -62,7 +62,7 @@ const Template = () => {
         card.
       </p>
 
-      <article className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 my-10 px-3 md:px-0 md:max-w-[45rem] lg:max-w-[60rem] xl:max-w-7xl mx-auto gap-x-5 gap-y-8'>
+      <article className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-10 px-3 md:px-0 md:max-w-[45rem] lg:max-w-[60rem] nav xl:max-w-[75rem] mx-auto gap-x-5 gap-y-8'>
         {templates.map((temp, index) => (
           <motion.div
             key={index}
