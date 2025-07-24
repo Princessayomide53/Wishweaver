@@ -106,7 +106,7 @@ const CreateTemplate = () => {
     toast.success('Card saved successfully! 🎉');
     setTimeout(() => {
       navigate('/view-cards');
-    }, 1500);
+    }, 2000);
 
     setSelectedOccasion('');
     setSelectedTemplate('');

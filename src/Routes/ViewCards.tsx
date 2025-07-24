@@ -19,19 +19,21 @@ type GroupMessage = {
 };
 
 const ViewCards = () => {
-  const [cardData, setCardData] = useState<WishCardData | null>(null);
+  const [cardDataList, setCardDataList] = useState<WishCardData[]>([]);
   const [groupMessages, setGroupMessages] = useState<GroupMessage[]>([]);
 
   useEffect(() => {
-    const card = localStorage.getItem('wishCardData');
+    const cardArray = localStorage.getItem('wishCardData');
     const messageData = localStorage.getItem('groupMessageData');
 
-    if (card) {
+    if (cardArray) {
       try {
-        const parsedCard = JSON.parse(card);
-        setCardData(parsedCard);
+        const parsed = JSON.parse(cardArray);
+        if (Array.isArray(parsed)) {
+          setCardDataList(parsed);
+        }
       } catch (err) {
-        console.error('Invalid card data:', err);
+        console.error('Invalid card array:', err);
       }
     }
 
@@ -52,50 +54,44 @@ const ViewCards = () => {
       <Nav />
       <article className='min-h-screen p-6 md:p-12 bg-gray-600 text-gray-800'>
         <div className='max-w-6xl mx-auto space-y-10 pt-20'>
-          {/* Fixed Card Section */}
-          {cardData &&
-            cardData.occasion === 'Customize' &&
-            cardData.message && (
-              <div className='bg-white h-[30rem] lg:h-auto shadow-lg rounded-xl overflow-hidden p-4'>
-                <h2 className='text-xl font-semibold mb-4'>
-                  To: {cardData.recipient}
+          {/* Cards Section */}
+          {cardDataList.map((card, index) => (
+            <div
+              key={index}
+              className='bg-white shadow-lg rounded-xl overflow-hidden'
+            >
+              <div className='p-6'>
+                <h2 className='text-xl font-semibold mb-2'>
+                  To: {card.recipient}
                 </h2>
-                <p className='text-lg text-gray-700 mb-2'>
-                  From: {cardData.name}
-                </p>
-                <ThreeDModel message={cardData.message} />
+                <p className='text-lg text-gray-700 mb-4'>From: {card.name}</p>
               </div>
-            )}
 
-          {/* Regular Card Section */}
-          {cardData && cardData.occasion !== 'Customize' && (
-            <article className='bg-white shadow-lg rounded-xl overflow-hidden'>
-              <figure className='w-full h-64 bg-gray-200'>
-                {cardData.template && (
+              {card.occasion === 'Customize' && card.message ? (
+                <div className='px-6 pb-6'>
+                  <ThreeDModel message={card.message} />
+                </div>
+              ) : (
+                <figure className='w-full h-64 bg-gray-200'>
                   <img
-                    src={cardData.template || '/placeholder.svg'}
+                    src={card.template || '/placeholder.svg'}
                     alt='template'
                     loading='lazy'
                     className='w-full h-full object-cover'
                     onError={(e) => (e.currentTarget.style.display = 'none')}
                   />
-                )}
-              </figure>
-              <div className='p-6'>
-                <h2 className='text-2xl font-semibold mb-2'>
-                  To: {cardData.recipient}
-                </h2>
-                <p className='text-lg text-gray-700 mb-4'>
-                  From: {cardData.name}
-                </p>
-                {cardData.message && (
+                </figure>
+              )}
+
+              {card.message && card.occasion !== 'Customize' && (
+                <div className='p-6 pt-2'>
                   <p className='bg-gray-100 p-4 rounded text-gray-700'>
-                    {cardData.message}
+                    {card.message}
                   </p>
-                )}
-              </div>
-            </article>
-          )}
+                </div>
+              )}
+            </div>
+          ))}
 
           {/* Group Messages Grid */}
           {groupMessages.length > 0 && (
@@ -140,8 +136,8 @@ const ViewCards = () => {
             </div>
           )}
 
-          {/* If no data */}
-          {!cardData && groupMessages.length === 0 && (
+          {/* No data fallback */}
+          {cardDataList.length === 0 && groupMessages.length === 0 && (
             <div className='text-center text-white text-xl'>
               No card or messages found in local storage.
             </div>

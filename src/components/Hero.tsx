@@ -208,7 +208,7 @@ const Hero = () => {
 
   return (
     <section className='relative min-h-screen flex flex-col items-center text-center text-white overflow-hidden'>
-      <div className='absolute inset-0 z-10'>
+      <div className='absolute inset-0 z-20'>
         <Nav />
       </div>
 
@@ -256,7 +256,7 @@ const Hero = () => {
 
       {/* Hero Content */}
       <motion.div
-        className='relative z-10 flex flex-col items-center justify-center flex-1 px-4 py-20 max-w-5xl mx-auto'
+        className='relative flex flex-col items-center justify-center flex-1 px-4 py-20 max-w-5xl mx-auto'
         initial='hidden'
         animate='visible'
         variants={containerVariants}
