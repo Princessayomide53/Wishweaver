@@ -14,7 +14,7 @@ import ThreeDModel from '../components/ThreeDModel';
 import Button from '../components/Common/Button';
 import Nav from '../components/Nav';
 import { BiArrowBack } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type OccasionType = 'Birthday' | 'Graduation' | 'Customize';
 type Template = { name: string; src: string };
@@ -54,6 +54,7 @@ const templates: Templates = {
 };
 
 const CreateTemplate = () => {
+  const navigate = useNavigate();
   const nameRef = useRef<HTMLInputElement>(null);
   const recipientRef = useRef<HTMLInputElement>(null);
   const [selectedOccasion, setSelectedOccasion] = useState<OccasionType | ''>(
@@ -103,6 +104,9 @@ const CreateTemplate = () => {
 
     localStorage.setItem('wishCardData', JSON.stringify(dataToSave));
     toast.success('Card saved successfully! 🎉');
+    setTimeout(() => {
+      navigate('/view-cards');
+    }, 1500);
 
     setSelectedOccasion('');
     setSelectedTemplate('');
@@ -170,7 +174,7 @@ const CreateTemplate = () => {
           >
             <BiArrowBack className='text-white text-4xl' />
           </Link>
-          <div className='relative z-10 py-5 md:py-7 p-3 md:p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white m-5 lg:pt-10 md:m-16'>
+          <div className='relative z-10 py-5 md:py-7 p-3 md:p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white m-5 lg:pt-10 xl:m-16'>
             <h2 className='text-xl md:text-3xl font-semibold mb-6'>
               Weave your Card
             </h2>

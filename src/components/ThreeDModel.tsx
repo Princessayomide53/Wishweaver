@@ -7,7 +7,7 @@ const CardModel = () => {
   const { scene } = useGLTF('/model/card.glb');
   return <primitive object={scene} scale={1.5} />;
 };
-
+useGLTF.preload('/model/card.glb');
 const ThreeDModel = ({ message }: { message: string }) => {
   const getFontSize = (msg: string) => {
     if (msg.length < 20) return 0.3;
