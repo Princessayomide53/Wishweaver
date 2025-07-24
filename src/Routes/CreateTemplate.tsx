@@ -13,23 +13,21 @@ import { ToastContainer } from 'react-toastify';
 import ThreeDModel from '../components/ThreeDModel';
 import Button from '../components/Common/Button';
 import Nav from '../components/Nav';
+import { BiArrowBack } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 type OccasionType = 'Birthday' | 'Graduation' | 'Customize';
 type Template = { name: string; src: string };
 type ValidOccasion = Exclude<OccasionType, 'Customize'>;
 
-type BirthdayTemplateKeys =
-  | 'minimal'
-  | 'festive'
-  | 'floral'
-  | 'modern'
-  | 'interactive';
+type BirthdayTemplateKeys = 'minimal' | 'festive' | 'floral' | 'modern';
+// | 'interactive';
 type GraduationTemplateKeys =
   | 'classicCap'
   | 'achievementGlow'
   | 'elegantScroll'
-  | 'boldFuture'
-  | 'digitalCheers';
+  | 'boldFuture';
+// | 'digitalCheers';
 
 type Templates = {
   Birthday: Record<BirthdayTemplateKeys, Template>;
@@ -43,14 +41,14 @@ const templates: Templates = {
     festive: { name: 'Festive Template', src: birthday5 },
     floral: { name: 'Floral Template', src: birthday4 },
     modern: { name: 'Modern Template', src: t3 },
-    interactive: { name: 'Interactive Template', src: birthday5 },
+    // interactive: { name: 'Interactive Template', src: birthday5 },
   },
   Graduation: {
     classicCap: { name: 'Classic Cap', src: t8 },
     achievementGlow: { name: 'Achievement Glow', src: t9 },
     elegantScroll: { name: 'Elegant Scroll', src: t10 },
     boldFuture: { name: 'Bold Future', src: t3 },
-    digitalCheers: { name: 'Digital Cheers', src: birthday5 },
+    // digitalCheers: { name: 'Digital Cheers', src: birthday5 },
   },
   Customize: {},
 };
@@ -156,18 +154,23 @@ const CreateTemplate = () => {
 
   return (
     <>
-      <Nav />
       <section className='lg:flex h-screen overflow-hidden bg-cyan-900 '>
         <ToastContainer position='top-center' />
-        <article className='md:w-full lg:w-[45%] h-screen overflow-hidden relative pt-10 md:pt-0'>
+        <article className='md:w-full lg:w-[45%] h-screen overflow-hidden relative pt-20 lg:pt-20'>
           <figure className='absolute inset-0 z-0'>
             <img
               src={celebration}
               alt='celebration'
-              className='object-cover w-full h-[45rem]'
+              className='object-cover w-full h-screen'
             />
           </figure>
-          <div className='relative z-10 py-5 md:py-7 p-3 md:p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white mt-16 md:mt-28 m-5 md:m-16'>
+          <Link
+            to='/'
+            className='absolute top-4 left-4 md:top-6 md:left-6 z-30'
+          >
+            <BiArrowBack className='text-white text-4xl' />
+          </Link>
+          <div className='relative z-10 py-5 md:py-7 p-3 md:p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white m-5 lg:pt-10 md:m-16'>
             <h2 className='text-xl md:text-3xl font-semibold mb-6'>
               Weave your Card
             </h2>

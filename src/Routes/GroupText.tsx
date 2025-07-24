@@ -63,10 +63,6 @@ const GroupText = () => {
     <>
       {/* <Nav /> */}
 
-      <Link to='/'>
-        <BiArrowBack className='text-white text-2xl' />
-      </Link>
-
       <section className='relative h-screen overflow-hidden'>
         <ToastContainer position='top-center' />
         <figure>
@@ -76,6 +72,9 @@ const GroupText = () => {
             className='object-cover h-screen w-full'
           />
         </figure>
+        <Link to='/' className='absolute top-4 left-4 md:top-6 md:left-6 z-30'>
+          <BiArrowBack className='text-white text-4xl' />
+        </Link>
 
         <article className='absolute inset-0 z-10 flex flex-col justify-center items-center pt-20 lg:pt-10'>
           <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-screen md:h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
