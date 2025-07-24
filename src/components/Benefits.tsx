@@ -79,9 +79,9 @@ const Benefits = () => {
               ))}
             </motion.div>
 
-            <Link to='/Cards'>
+            <Link to='/group-template'>
               <Button className='!rounded-full !mt-6 !py-3 lg:!py-4 text-sm md:text-base'>
-                View card
+                group message
               </Button>
             </Link>
           </div>
@@ -142,9 +142,9 @@ const Benefits = () => {
                 </motion.p>
               ))}
             </div>
-            <Link to='/Cards'>
+            <Link to='/group-template'>
               <Button className='!rounded-full md:!py-3 lg:!py-4 !mt-6 text-sm md:text-base'>
-                View Card
+                group message
               </Button>
             </Link>
           </div>

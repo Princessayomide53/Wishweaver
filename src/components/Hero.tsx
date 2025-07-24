@@ -208,7 +208,7 @@ const Hero = () => {
 
   return (
     <section className='relative min-h-screen flex flex-col items-center text-center text-white overflow-hidden'>
-      <div className='absolute inset-0 z-20'>
+      <div className='absolute inset-0 '>
         <Nav />
       </div>
 
