@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from '../Wishweaver/src/components/Home';
+import Home from './components/Home';
 import CreateTemplate from './Routes/CreateTemplate';
 import GroupText from './Routes/GroupText';
 import Preview from './Routes/Preview';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Nav from '../../Wishweaver/src/components/Nav';
-import ThreeDModel from '../../Wishweaver/src/components/ThreeDModel';
+import Nav from '../components/Nav';
+import ThreeDModel from '../components/ThreeDModel';
 
 type WishCardData = {
   occasion: string;
