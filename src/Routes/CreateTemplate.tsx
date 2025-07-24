@@ -102,7 +102,12 @@ const CreateTemplate = () => {
       message: messageValue,
     };
 
-    localStorage.setItem('wishCardData', JSON.stringify(dataToSave));
+    const existing = localStorage.getItem('wishCardData');
+    const currentList = existing ? JSON.parse(existing) : [];
+
+    const updatedList = [...currentList, dataToSave];
+    localStorage.setItem('wishCardData', JSON.stringify(updatedList));
+
     toast.success('Card saved successfully! 🎉');
     setTimeout(() => {
       navigate('/view-cards');
