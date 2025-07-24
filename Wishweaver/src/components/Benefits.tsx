@@ -54,7 +54,7 @@ const Benefits = () => {
               Businesses benefit from fostering team spirit and employee
               appreciation
             </motion.h3>
-            <motion.p
+            <motion.div
               initial='hidden'
               whileInView='visible'
               viewport={{ once: true }}
@@ -66,7 +66,7 @@ const Benefits = () => {
                 'Easily schedule multiple cards via an Excel upload.',
                 'Personalize cards with your organization’s logo and team photos.',
               ].map((text, i) => (
-                <motion.div
+                <motion.p
                   key={i}
                   className='flex items-start gap-3'
                   variants={textVariant}
@@ -74,9 +74,9 @@ const Benefits = () => {
                 >
                   <IoIosCheckmarkCircleOutline className='text-[#ff7f50] font-bold mt-1 text-2xl' />
                   <span className='text-[#0B0C0E]'>{text}</span>
-                </motion.div>
+                </motion.p>
               ))}
-            </motion.p>
+            </motion.div>
             <Button className='!rounded-full !mt-6 !py-3 lg:!py-4 text-sm md:text-base'>
               Weave a Card
             </Button>
@@ -120,14 +120,14 @@ const Benefits = () => {
               Individuals Enjoy the Ease of Creating Personalized Cards that
               Strengthen Connections
             </motion.h3>
-            <p className='md:text-sm lg:text-xl font-normal md:w-[19rem] lg:w-[30rem] pt-7 md:pt-5 lg:pt-10 space-y-4 lg:space-y-6 px-2'>
+            <div className='md:text-sm lg:text-xl font-normal md:w-[19rem] lg:w-[30rem] pt-7 md:pt-5 lg:pt-10 space-y-4 lg:space-y-6 px-2'>
               {[
                 'Upload unlimited messages and photos',
                 'Display as a slideshow during events.',
                 'Share easily with a unique online URL.',
                 'Collect contributions for a meaningful cash gift.',
               ].map((texts, i) => (
-                <motion.div
+                <motion.p
                   key={i}
                   className='flex items-start gap-3'
                   variants={textVariant}
@@ -135,9 +135,9 @@ const Benefits = () => {
                 >
                   <IoIosCheckmarkCircleOutline className='text-[#ff7f50] font-bold mt-1 text-2xl' />
                   <span className='text-[#0B0C0E]'>{texts}</span>
-                </motion.div>
+                </motion.p>
               ))}
-            </p>
+            </div>
             <Button className='!rounded-full md:!py-3 lg:!py-4 !mt-6 text-sm md:text-base'>
               Weave a Card
             </Button>

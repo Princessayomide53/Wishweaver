@@ -57,7 +57,7 @@ const Works = () => {
           className={`grid grid-cols-1 md:grid-cols-3 justify-center md:place-items-center pt-5 md:pt-7 lg:pt-10 gap-5 md:gap-12 lg:gap-24 max-w-[18rem] md:max-w-7xl mx-auto`}
         >
           {Cards.map((items, index) => (
-            <div className={`${index === 1 ? 'md:mt-10' : ''}`}>
+            <div key={index} className={`${index === 1 ? 'md:mt-10' : ''}`}>
               <figure>
                 <img src={items.img} alt='How it works' />
               </figure>
