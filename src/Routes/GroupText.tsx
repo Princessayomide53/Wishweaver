@@ -81,7 +81,7 @@ const GroupText = () => {
         </Link>
 
         <article className='absolute inset-0 z-10 flex flex-col justify-center items-center pt-20 lg:pt-10'>
-          <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-screen md:h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
+          <div className='p-4 md:p-8 m-3 md:m-0 md:w-[30rem] lg:w-[32rem] h-[32rem] md:h-[38.5rem] backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white'>
             <h2 className='text-center text-xl'>Group Celebration</h2>
 
             <p className='text-center text-xs md:text-base md:py-4'>
