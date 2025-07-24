@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import celebration from '../assets/Celebration.jpg';
 import birthday from '../assets/birthday1.jpg';
-import birthday2 from '../assets/birthday2.jpg';
-import birthday3 from '../assets/birthday3.jpg';
 import birthday4 from '../assets/birthday4.svg';
 import birthday5 from '../assets/birthday5.jpg';
 import t3 from '../assets/t3.svg';
@@ -14,34 +12,59 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import ThreeDModel from '../components/ThreeDModel';
 import Button from '../components/Common/Button';
+import Nav from '../components/Nav';
 
 type OccasionType = 'Birthday' | 'Graduation' | 'Customize';
+type Template = { name: string; src: string };
+type ValidOccasion = Exclude<OccasionType, 'Customize'>;
+
+type BirthdayTemplateKeys =
+  | 'minimal'
+  | 'festive'
+  | 'floral'
+  | 'modern'
+  | 'interactive';
+type GraduationTemplateKeys =
+  | 'classicCap'
+  | 'achievementGlow'
+  | 'elegantScroll'
+  | 'boldFuture'
+  | 'digitalCheers';
+
+type Templates = {
+  Birthday: Record<BirthdayTemplateKeys, Template>;
+  Graduation: Record<GraduationTemplateKeys, Template>;
+  Customize: Record<string, never>;
+};
+
+const templates: Templates = {
+  Birthday: {
+    minimal: { name: 'Minimal Template', src: birthday },
+    festive: { name: 'Festive Template', src: birthday5 },
+    floral: { name: 'Floral Template', src: birthday4 },
+    modern: { name: 'Modern Template', src: t3 },
+    interactive: { name: 'Interactive Template', src: birthday5 },
+  },
+  Graduation: {
+    classicCap: { name: 'Classic Cap', src: t8 },
+    achievementGlow: { name: 'Achievement Glow', src: t9 },
+    elegantScroll: { name: 'Elegant Scroll', src: t10 },
+    boldFuture: { name: 'Bold Future', src: t3 },
+    digitalCheers: { name: 'Digital Cheers', src: birthday5 },
+  },
+  Customize: {},
+};
+
 const CreateTemplate = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const recipientRef = useRef<HTMLInputElement>(null);
   const [selectedOccasion, setSelectedOccasion] = useState<OccasionType | ''>(
     ''
   );
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const [message, setMessage] = useState('');
-  const [selectedTemplate, setSelectedTemplate] = useState('');
-  const options = ['Birthday', 'Graduation', 'Customize'];
-  const templates = {
-    Birthday: {
-      minimal: birthday,
-      festive: birthday5,
-      floral: birthday4,
-      modern: t3,
-      interactive: birthday5,
-    },
-    Graduation: {
-      classicCap: t8,
-      achievementGlow: t9,
-      elegantScroll: t10,
-      boldFuture: t3,
-      digitalCheers: birthday5,
-    },
-    Customize: {},
-  };
+
+  const options: OccasionType[] = ['Birthday', 'Graduation', 'Customize'];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,9 +88,16 @@ const CreateTemplate = () => {
       return;
     }
 
+    const selectedTemplateData =
+      selectedOccasion !== 'Customize'
+        ? (templates[selectedOccasion] as Record<string, Template>)[
+            selectedTemplate
+          ]
+        : null;
+
     const dataToSave = {
       occasion: selectedOccasion,
-      template: selectedTemplate,
+      template: selectedTemplateData?.src || '',
       name,
       recipient,
       message: messageValue,
@@ -92,7 +122,6 @@ const CreateTemplate = () => {
     const centerY = rect.height / 2;
     const rotateX = ((y - centerY) / centerY) * -10;
     const rotateY = ((x - centerX) / centerX) * 10;
-
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
   };
 
@@ -105,64 +134,89 @@ const CreateTemplate = () => {
       'transform 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99)';
   };
 
+  const getTemplateSrc = (): string | null => {
+    if (
+      selectedOccasion === 'Birthday' &&
+      selectedTemplate in templates.Birthday
+    ) {
+      const templateKey = selectedTemplate as BirthdayTemplateKeys;
+      return templates.Birthday[templateKey]?.src ?? null;
+    }
+
+    if (
+      selectedOccasion === 'Graduation' &&
+      selectedTemplate in templates.Graduation
+    ) {
+      const templateKey = selectedTemplate as GraduationTemplateKeys;
+      return templates.Graduation[templateKey]?.src ?? null;
+    }
+
+    return null;
+  };
+
   return (
-    <section className='flex overflow-hidden'>
-      <ToastContainer position='top-center' />
-      <article className='w-[45%] h-screen overflow-hidden relative'>
-        <figure className='absolute inset-0 z-0'>
-          <img
-            src={celebration}
-            alt='celebration'
-            className='object-cover w-full h-full'
-          />
-        </figure>
-        <div className='relative z-10 py-10 p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white m-16'>
-          <h2 className='text-3xl font-semibold mb-6'>Weave your Card</h2>
-          <form onSubmit={handleSubmit} className='space-y-7'>
-            <div>
-              <select
-                value={selectedOccasion}
-                onChange={(e) => {
-                  setSelectedOccasion(e.target.value as OccasionType);
-                  setSelectedTemplate('');
-                }}
-                className='w-full p-2 h-12 focus:outline-blue-300 rounded bg-white/20'
-              >
-                <option value='' className='bg-white/20 text-black'>
-                  Select an Occasion
-                </option>
-                {options.map((val, index) => (
-                  <option
-                    key={index}
-                    value={val}
-                    className='bg-white/20 text-black'
-                  >
-                    {val}
+    <>
+      <Nav />
+      <section className='lg:flex h-screen overflow-hidden bg-cyan-900'>
+        <ToastContainer position='top-center' />
+        <article className='md:w-full lg:w-[45%] h-screen overflow-hidden relative'>
+          <figure className='absolute inset-0 z-0'>
+            <img
+              src={celebration}
+              alt='celebration'
+              className='object-cover w-full h-[45rem]'
+            />
+          </figure>
+          <div className='relative z-10 py-5 md:py-7 p-8 backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl text-white mt-16 md:mt-28 m-5 md:m-16'>
+            <h2 className='text-3xl font-semibold mb-6'>Weave your Card</h2>
+            <form onSubmit={handleSubmit} className='space-y-7'>
+              <div>
+                <select
+                  value={selectedOccasion}
+                  onChange={(e) => {
+                    setSelectedOccasion(e.target.value as OccasionType);
+                    setSelectedTemplate('');
+                  }}
+                  className='w-full p-2 h-12 focus:outline-blue-300 rounded bg-white/20'
+                >
+                  <option value='' className='bg-white/20 text-black'>
+                    Select an Occasion
                   </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className='block text-lg mb-1'>Your Name</label>
-              <input
-                ref={nameRef}
-                className='w-full p-2 h-12 rounded bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
-                placeholder='e.g. John Doe'
-              />
-            </div>
-            <div>
-              <label className='block text-lg mb-1'>
-                Who is receiving this card?
-              </label>
-              <input
-                ref={recipientRef}
-                className='w-full p-2 rounded h-12 bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
-                placeholder='e.g. Mom'
-              />
-            </div>
-            <div>
+                  {options.map((val) => (
+                    <option
+                      key={val}
+                      value={val}
+                      className='bg-white/20 text-black'
+                    >
+                      {val}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className='block text-lg mb-1'>Your Name</label>
+                <input
+                  ref={nameRef}
+                  className='w-full p-2 h-12 rounded bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
+                  placeholder='e.g. John Doe'
+                />
+              </div>
+
+              <div>
+                <label className='block text-lg mb-1'>
+                  Who is receiving this card?
+                </label>
+                <input
+                  ref={recipientRef}
+                  className='w-full p-2 h-12 rounded bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
+                  placeholder='e.g. Mom'
+                />
+              </div>
+
               {selectedOccasion &&
-                Object.keys(templates[selectedOccasion]).length > 0 && (
+                Object.keys(templates[selectedOccasion]).length > 0 &&
+                selectedOccasion !== 'Customize' && (
                   <div>
                     <label className='block text-lg mb-1'>
                       Choose a Design Template
@@ -175,86 +229,80 @@ const CreateTemplate = () => {
                       <option value='' className='bg-white/20 text-black'>
                         Select a Template
                       </option>
-                      {Object.keys(templates[selectedOccasion]).map((key) => (
+                      {Object.entries(
+                        templates[selectedOccasion] as Record<string, Template>
+                      ).map(([key, val]) => (
                         <option
                           key={key}
                           value={key}
                           className='bg-white/20 text-black'
                         >
-                          {key.charAt(0).toUpperCase() + key.slice(1)} Template
+                          {val.name}
                         </option>
                       ))}
                     </select>
                   </div>
                 )}
-            </div>
 
-            {selectedOccasion === 'Customize' && (
-              <div>
-                <label className='block text-lg mb-1'>Message</label>
-                <input
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className='w-full p-2 rounded h-12 bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
-                  placeholder='Write something sweet...'
-                />
-              </div>
-            )}
+              {selectedOccasion === 'Customize' && (
+                <div>
+                  <label className='block text-lg mb-1'>Message</label>
+                  <input
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className='w-full p-2 rounded h-12 bg-white/20 focus:outline-blue-300 text-white placeholder:text-white/70'
+                    placeholder='Write something sweet...'
+                  />
+                </div>
+              )}
 
-            <Button className='!rounded-full !-mt-0' type='submit'>
-              Weave a card
-            </Button>
-          </form>
-        </div>
-      </article>
+              <Button className='!rounded-full !-mt-0' type='submit'>
+                Weave a card
+              </Button>
+            </form>
+          </div>
+        </article>
 
-      {/* card preview */}
-      <article className='w-[55%] h-screen pl-10'>
-        <h3 className='text-center tracking-wider font-semibold py-10 text-4xl'>
-          Preview Cards
-        </h3>
+        {/* Card Preview */}
+        <article className='lg:w-[42%] xl:w-[48%] w-[55%] h-screen lg:ml-14 xl:ml-10 hidden lg:inline-block mt-20'>
+          <h3 className='text-center tracking-wider font-semibold pt-10 pb-5 md:text-3xl text-white'>
+            Preview Cards
+          </h3>
 
-        {selectedTemplate &&
-          selectedOccasion &&
-          selectedOccasion !== 'Customize' &&
-          templates[selectedOccasion][
-            selectedTemplate as keyof (typeof templates)[OccasionType]
-          ] && (
+          {getTemplateSrc() && (
             <figure
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
+              className='flex justify-center mr-10'
               style={{
                 willChange: 'transform',
                 transition:
                   'transform 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99)',
-                // height: '100%',
               }}
-              className='flex justify-center mr-10'
             >
               <img
-                src={
-                  templates[selectedOccasion as OccasionType][
-                    selectedTemplate as keyof (typeof templates)[OccasionType]
-                  ]
-                }
+                src={getTemplateSrc()!}
                 alt='Preview Template'
-                className='w-auto h-[32rem] object-cover rounded-xl shadow-lg border border-[#acdcff]'
+                className='w-auto h-[30rem] object-cover rounded-xl shadow-lg border border-[#acdcff]'
               />
             </figure>
           )}
 
-        {selectedOccasion === 'Customize' && <ThreeDModel message={message} />}
+          {selectedOccasion === 'Customize' && (
+            <ThreeDModel message={message} />
+          )}
 
-        {!selectedTemplate && selectedOccasion !== 'Customize' && (
-          <div className='flex flex-col justify-center items-center'>
-            <div className='w-[35rem] h-[28rem] bg-gray-200 border border-[#acdcff] rounded-2xl'></div>
-            <p className='text-black text-center text-3xl pt-7'>
-              No template selected yet
-            </p>
-          </div>
-        )}
-      </article>
-    </section>
+          {!selectedTemplate && selectedOccasion !== 'Customize' && (
+            <div className='flex flex-col justify-center items-center'>
+              <div className='lg:w-[27rem] w-[35rem] h-[25rem] bg-gray-200 border border-[#acdcff] rounded-2xl'></div>
+              <p className='text-white text-center text-3xl pt-7'>
+                No template selected yet
+              </p>
+            </div>
+          )}
+        </article>
+      </section>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import teamVideo from '../assets/team.mp4';
 import graduation from '../assets/Graduation.mp4';
 import wedding from '../assets/wedding.mp4';
 import Couple from '../assets/couples.mp4';
-
+import { Link } from 'react-router-dom';
 import anniversary from '../assets/anniversary.mp4';
 
 const Hero = () => {
@@ -33,11 +33,10 @@ const Hero = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Cycle videos every 10 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
-    }, 10000); // 10 seconds per video
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [videos.length]);
@@ -52,14 +51,14 @@ const Hero = () => {
     }
   }, [currentVideoIndex]);
   return (
-    <section className='relative min-h-screen flex flex-col items-center text-center text-white p-4 sm:p-8'>
-      <div className='absolute inset-0 z-20'>
+    <section className='relative h-[42rem] md:min-h-screen flex flex-col items-center text-center text-white p-4 sm:p-8'>
+      <div className='absolute inset-0'>
         <Nav />
       </div>
 
       <motion.video
         ref={videoRef}
-        className='absolute inset-0 w-full h-full object-cover z-10'
+        className='absolute inset-0 w-full h-full object-cover pointer-events-none'
         autoPlay
         loop
         muted
@@ -71,11 +70,9 @@ const Hero = () => {
         <source src={videos[currentVideoIndex].src} type='video/mp4' />
       </motion.video>
 
-      <div className='absolute inset-0 z-10' />
-
       {/* Hero Content */}
       <motion.div
-        className='relative z-20 max-w-5xl mx-auto mt-40'
+        className='relative z-10 max-w-5xl mx-auto mt-40'
         initial='hidden'
         animate='visible'
         variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
@@ -99,15 +96,24 @@ const Hero = () => {
           <br />
           Pool contributions for a cash gift (coming soon)
         </motion.p>
-        <motion.a
-          href='/create-template'
-          className='inline-block mx-3 text-sm md:text-base px-4 bg-[#ff7f50] text-white font-semibold cursor-pointer py-3 md:py-4 md:px-6 rounded-xl transition-transform duration-300 hover:scale-105'
-        >
-          Weave Your Card
-        </motion.a>
-        <motion.a className='inline-block mx-3 text-sm md:text-base px-4 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-3 md:py-4 md:px-6 rounded-xl transition-transform duration-300 hover:scale-105'>
-          View Sample Card
-        </motion.a>
+        <Link to='/create-template'>
+          {' '}
+          <motion.button
+            variants={heroVariants}
+            className='inline-block mx-3 my-2 text-sm md:text-base px-4 bg-[#ff7f50] text-white font-semibold cursor-pointer py-3 md:py-4 md:px-6 rounded-xl transition-transform duration-300 hover:scale-105'
+          >
+            Weave Your Card
+          </motion.button>
+        </Link>
+        <Link to='/group-template'>
+          {' '}
+          <motion.button
+            variants={heroVariants}
+            className='inline-block mx-3 my-2 text-sm md:text-base px-4 border-2 border-[#ff7f50] text-white cursor-pointer font-semibold py-3 md:py-4 md:px-6 rounded-xl transition-transform duration-300 hover:scale-105'
+          >
+            View Sample Card
+          </motion.button>
+        </Link>
       </motion.div>
     </section>
   );
