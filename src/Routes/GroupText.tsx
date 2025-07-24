@@ -5,9 +5,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from '../components/Nav';
 import { BiArrowBack } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const GroupText = () => {
+  const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
   const [message, setMessage] = useState('');
   const [sender, setSender] = useState('');
@@ -52,6 +53,9 @@ const GroupText = () => {
 
     localStorage.setItem('groupMessageData', JSON.stringify(parsed));
     toast.success('Message saved successfully! 🎉');
+    setTimeout(() => {
+      navigate('/view-cards');
+    }, 2000);
 
     setMessage('');
     setSender('');

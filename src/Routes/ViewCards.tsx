@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Nav from '../components/Nav';
 import ThreeDModel from '../components/ThreeDModel';
+import { useNavigate } from 'react-router-dom';
 
 type WishCardData = {
   occasion: string;
