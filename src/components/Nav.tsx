@@ -43,7 +43,7 @@ const Nav = () => {
       } ${nav && 'bg-[#0b0c0e]/90'}`}
     >
       <div
-        className={`relative flex mx-auto z-20 justify-between w-full xl:max-w-[75rem] nav py-5 md:py-3 xl:py-8 lg:max-w-[60rem] md:max-w-[45rem] px-3 md:px-0`}
+        className={`relative flex mx-auto z-50 justify-between w-full xl:max-w-[75rem] nav py-5 md:py-3 xl:py-8 lg:max-w-[60rem] md:max-w-[45rem] px-3 md:px-0`}
       >
         <h1 className='text-white font-bold text-2xl mt-2'>
           <Link to='/'>
@@ -85,7 +85,7 @@ const Nav = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className='xl:hidden bg-[#0b0c0e]/90 z-20 -mt-24 text-white px-6 py-6 h-screen space-y-6 backdrop-blur-lg shadow-lg'
+            className='xl:hidden bg-[#0b0c0e]/90 z-50 -mt-24 text-white px-6 py-6 h-screen space-y-6 backdrop-blur-lg shadow-lg'
           >
             <ul className='flex flex-col space-y-5 text-lg pt-28'>
               {navLinks.map((link, i) => (

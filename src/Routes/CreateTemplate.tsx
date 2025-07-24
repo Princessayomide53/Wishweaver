@@ -165,6 +165,7 @@ const CreateTemplate = () => {
             <img
               src={celebration}
               alt='celebration'
+              loading='lazy'
               className='object-cover w-full h-screen'
             />
           </figure>

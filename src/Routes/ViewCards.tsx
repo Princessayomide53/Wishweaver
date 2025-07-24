@@ -67,7 +67,7 @@ const ViewCards = () => {
               </div>
             )}
 
-          {/* Regular Card Section - Fixed condition */}
+          {/* Regular Card Section */}
           {cardData && cardData.occasion !== 'Customize' && (
             <article className='bg-white shadow-lg rounded-xl overflow-hidden'>
               <figure className='w-full h-64 bg-gray-200'>
@@ -75,6 +75,7 @@ const ViewCards = () => {
                   <img
                     src={cardData.template || '/placeholder.svg'}
                     alt='template'
+                    loading='lazy'
                     className='w-full h-full object-cover'
                     onError={(e) => (e.currentTarget.style.display = 'none')}
                   />
