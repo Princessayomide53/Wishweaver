@@ -1,4 +1,3 @@
-// components/ThreeDModel.tsx
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text, useGLTF } from '@react-three/drei';
