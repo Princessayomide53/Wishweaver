@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useMemo, useCallback } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import Button from './Common/Button';
